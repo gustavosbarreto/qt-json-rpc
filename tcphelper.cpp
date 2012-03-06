@@ -98,6 +98,9 @@ void TcpHelper::onReadyRead()
         peer->handleMessage(buffer);
         buffer.clear();
         nextMessageSize = 0;
+
+        if (socket->bytesAvailable() > 0)
+            onReadyRead();
     }
 }
 
