@@ -38,7 +38,7 @@ bool TcpHelper::setSocket(QTcpSocket *socket)
                 this,
                 SIGNAL(readyRequest(QSharedPointer<JsonRPC::ResponseHandler>)));
         connect(peer, SIGNAL(readySignal(QString,QVariant)),
-                this, SIGNAL(readySignal(QString,QVariant)));
+                this, SIGNAL(readySignal(QString,QVariant)), Qt::QueuedConnection);
 
         this->socket = socket;
 
